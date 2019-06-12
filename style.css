@@ -1,0 +1,12 @@
+body{
+    background-color: black;
+    color: beige;
+    display: flex;
+    flex-direction: column;
+    align-content: center;
+    margin-top: 10%;
+}
+
+button{
+    margin-left: 50%;
+}
