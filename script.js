@@ -1,53 +1,10 @@
-// génère un nombre au hasard entre 1 et 100.
-var chiffreHasard =  Math.floor(Math.random()*100+1);
-var bouton = document.getElementById("clic");
-var debut = "Bienvenue !";
-var choix = "L'ordinateur a choisi son chiffre. Il s'agit de ..." + chiffreHasard +" !";
-var tours = 1;
+var nom = ["Angelina Jolie","Bertand","Jul","Une larve purulente","Princesse Sarah","Stéphanie de Monaco","Le Petit Poucet","Piotr","Cunégonde","Cassiopée","Gontrand","Cyril Hanouna","Patrick Poivre d'Arvor","Jean-Eude","Jean-Claude Vandame","Dalida", "Mickael Jackson","Ton voisin bizarre", "Le père Noël", "Nicolat Hulot", "Jean-Kévin", "Jésus Christ, fils de Dieu,","Gérard Depardieu", "Benoit XVI", "Le pape", "Mère Thérésa", "Jacques Chirac", "Cthulhu", "Le Petit Chaperon Rouge", "Batman", "Un gars bourré", "Mickey", "Un pingouin boiteux", "Un vieillard salace", "Madonna", "Pikachu", "Harry Potter", "Ta mère", "Satan", "Stéphane Plazza", "Babar", "Peppa Pig"]
+var verbes =["hurle","rote","danse frénétiquement", "dessine","commande un Big Mac", "cite Confucius","sirote un délicieux diabolo menthe","attaque roulade", "disparaît","pète","cuisine","joue à la balle aux prisonniers","te toise du regard","croque la vie à pleines dents","tombe en dépression", "part élever des lamas dans la Creuse","porte des sandales en cuir", "pue des pieds", "joue des maracas", "boit son Yop", "fume un joint", "joue du xylophone avec entrain", "se brosse les cheveux", "boit son ricard cul sec", "lit 50 nuances de Grey","fait des crêpes","se prosterne", "avance lentement mais sûrement", "déguste une bonne tranche de munster", "entonne un chant partisan", "danse le madison", "souffre le martyr", "a compris le sens de la vie", "fait des mots fléchés","saute à pieds joints", "est en proie à la terreur", "s'éclate en soirée", "sait lacer ses chaussures", "porte des baskets Nike", "mange ses crottes de nez", "boit de l'eau de source à la bouteille", "mange des chocolats à la liqueur","fait semblant de ne pas te voir", "médite en silence","sait compter jusqu'à 10", "fume sa clope", "danse la tecktonik", "se fait plaisir", "mange des chips moutarde-pickles", "se gratte le nez", "se casse la gueule", "fait la gueule sans raison", "a chaussé ses claquettes", "boit son verre de lait", "sirote sa soupe bruyamment"]
+var cod = ["avec les pieds.", "mais ça n'est pas très efficace...","et impressionne tout le monde !","et aime ça.", "mais tient bon, même si c'est difficile...","dans son slip kangourou.","sous la table.", "comme un(e) demeuré(e).","un peu comme toi, d'ailleurs !","sans les mains.","avec brio !", "en faisant la poule.", "et s'esclaffe bruyamment.", "en vomissant ses tripes.", "et se sent beaucoup mieux.", "en pleurant toutes les larmes de son corps.","et meurt trois jours après.","en allant aux toilettes.","sur le trône de fer.", "en se foutant de ta gueule.","dans ton cul.",", mais c'est parce qu'il/elle souffre d'intolérance au lactose...","sous un pont.","et te trouve abject.","et rit timidement.","en jouant de la flûte à bec.", "du haut de la tour Eiffel.", "sous l'eau.","à la caisse de chez Auchan.", "en gloussant comme un dindon.", "avant de dormir.", "et s'endort paisiblement.", "avec une cuillère à café.", "avec son chien.", "en prenant un air très inspiré.","en se grattant les parties.", "en grattant ses boutons.", "en courant très vite.", "en se fiant à son instinct.", "et trouve ça extrêmement inspirant.", "dans sa grotte.", "entre 18h et 18h30 le samedi.","et trouve ça tout à fait fabuleux.", "en pensant à toi.", "en pensant à sa mère.", "à la nuit tombée.", "parce qu'il/elle possède un Iphone.", "en mendiant.", ",mais c'est parce qu'il/elle est non-binaire."]
 
+var nomrandom = nom[Math.floor(Math.random()*nom.length)]
+var verbesrandom = verbes[Math.floor(Math.random()*verbes.length)]
+var codrandom = cod[Math.floor(Math.random()*cod.length)]
 
-console.log(debut);
-console.log(choix);
-
-
-
-bouton.addEventListener("click", function(){
-    var valeurSaisie = document.getElementById("nombre").value;
-    var dif = valeurSaisie - chiffreHasard;
-    var choixjoueur = "Vous avez choisi " + valeurSaisie + " !";
-    console.log(`Vous êtes au tour numéro: ${tours}`)
-    console.log(choixjoueur);
-
-    if(valeurSaisie <= 0 || valeurSaisie > 100){
-        document.querySelector(".result").innerHTML = "Veuillez entrer un nombre entre 1 et 100"
-    }
-    else if(dif == 0){
-        var animation = document.querySelector(".result");
-        //déclaration de variable, la classe résult html s'appelle animation en javascript 
-        animation.innerHTML = "Bravo !"; 
-        animation.className="anim";
-        //j'attribue à cette variable la classe anim présente dans mon css avec l'animation
-        // animation += 2
-        //animation = animation +2
-        console.log("Fin du script JS.")
-    } else if(dif <= 10 && dif >= -10){
-        document.querySelector(".result").innerHTML = "C'est chaud !";   
-    }else if ((dif >= 11 && dif <= 30) || (dif <= -11 && dif>= -30)){
-        document.querySelector(".result").innerHTML = "C'est froid...";
-    }else{
-        document.querySelector(".result").innerHTML = "C'est très froid...";
-    }
-        if(tours>=5 && tours<=9){
-            document.querySelector(".result").innerHTML = "Indice : le nombre se situe entre " + (chiffreHasard - 5) + " et " + (chiffreHasard + 5);
-        }else if(tours==10){
-            document.querySelector("#jeu").style.display="none";
-            document.querySelector(".result").innerHTML = "Vous avez effectué vos 10 tours, c'est perdu !" 
-        console.log("Fin du script JS.")  
-    } 
-    document.getElementById("nbtour").innerHTML = "Vous avez effectué " + tours + " tour(s).";
-    tours++
-    });
-    
-
-    
+document.getElementById("phrase").innerHTML= nomrandom +" "+ verbesrandom + " " + codrandom;
 
